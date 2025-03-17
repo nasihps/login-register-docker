@@ -13,10 +13,10 @@ from fastapi import APIRouter
 
 router = APIRouter()
 
-MYSQL_HOST = "mysql_server"
-MYSQL_USER = "peter"
-MYSQL_PASSWORD = "password"
-MYSQL_DB = "fastapi_db"
+MYSQL_HOST = os.getenv("MYSQL_HOST")
+MYSQL_USER = os.getenv("MYSQL_USER")
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
+MYSQL_DB = os.getenv("MYSQL_DATABASE")
 
 
 SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}/{MYSQL_DB}"

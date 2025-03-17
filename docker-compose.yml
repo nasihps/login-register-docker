@@ -9,6 +9,11 @@ services:
       - "8000:8000"
     depends_on:
       - mysql_server
+    environment:
+      - MYSQL_HOST=mysql_server
+      - MYSQL_DATABASE=fastapi_db
+      - MYSQL_USER=peter
+      - MYSQL_PASSWORD=password
     restart: on-failure 
 
   mysql_server:
