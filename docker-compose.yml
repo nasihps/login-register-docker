@@ -1,0 +1,28 @@
+version: '3.12'
+
+services:
+  backend:
+    build:
+      context: ./login-backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql_server
+    restart: on-failure 
+
+  mysql_server:
+    image: mysql:8.0
+    environment:
+      - MYSQL_DATABASE=fastapi_db
+      - MYSQL_USER=peter
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+
+  frontend:
+    build:
+      context: ./login-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8001:80"
+    restart: on-failure
